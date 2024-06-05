@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    parameters {
+        string(defaultValue: "TEST", description: "Environment for service?", name: "nameDeploy")
+        choice(choices: ["EU-WEST-2A", "EU-WEST-2B", "EU-WEST-2C"], description: "Environment for service?", name: "myBoolean")
+        booleanParam(defaultValue: false, description: "start service", name: "deployEnv")
+    }
+
+
+
+    stages {
+        stage('Demo') {
+            steps {
+
+                echo "Please specify the dep-name: ${params.nameDeploy}"
+
+                echo "string is set to: ${params.deployEnv}"
+
+                echo "start deployment is set to: ${params.myBoolean}"
+            }
+        }
+        
+    }
+
+}
